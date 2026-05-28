@@ -1,0 +1,18 @@
+import random
+
+def main():
+    print("Khansole Academy")
+    num_1 = random.randint(10, 99)
+    num_2 = random.randint(10, 99)
+    print(f"What is {num_1} + {num_2}?" )
+    user_answer = int(input("Your answer: "))
+    
+    correct_answer = num_1 + num_2
+    if user_answer == correct_answer:
+        print("Correct!")
+    else:
+        print("Incorrect.")
+        print(f"The expected answer is {correct_answer}")    
+        
+if __name__ == '__main__':
+    main()
