@@ -1,0 +1,21 @@
+def main():
+    number_list = read_numbers_from_file("numbers.txt")
+    
+    if len(number_list) == 0:
+        print("No numbers found in file.")
+        return
+
+    average = sum(number_list) / len(number_list)
+    print(f"Average: {average}")
+
+def read_numbers_from_file(filename):
+    number_list = []
+    with open(filename, "r") as file:
+        for line in file:
+            line = line.strip()
+            if line:  # Make sure it's not an empty line
+                number_list.append(float(line))
+    return number_list
+
+if __name__ == '__main__':
+    main()
