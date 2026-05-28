@@ -1,0 +1,33 @@
+def main():
+    stones = 20
+    current_player = 1
+    first_turn = True  # Flag to handle first print without newline
+
+    while stones > 0:
+        if not first_turn:
+            print()  # Print a blank line before turns except the first one
+        else:
+            first_turn = False
+
+        print(f"There are {stones} stones left.")
+        print(f"Player {current_player} would you like to remove 1 or 2 stones?", end=" ")
+
+        while True:
+            user_input = input()
+            if user_input.strip().isdigit():
+                move = int(user_input)
+                if move in [1, 2] and move <= stones:
+                    break
+            print("Please enter 1 or 2: ", end="")
+
+        stones -= move
+
+        if stones == 0:
+            winner = 2 if current_player == 1 else 1
+            print(f"\nPlayer {winner} wins!")
+            break
+        current_player = 2 if current_player == 1 else 1
+
+
+if __name__ == "__main__":
+    main()
