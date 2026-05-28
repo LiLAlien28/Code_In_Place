@@ -1,0 +1,40 @@
+def main():
+    translations = {
+        "hello": "hola",
+        "dog": "perro",
+        "cat": "gato",
+        "well": "bien",
+        "us": "nos",
+        "nothing": "nada",
+        "house": "casa",
+        "time": "tiempo"
+    }
+
+    correct_count = 0
+    total = len(translations)
+
+    for english_word, spanish_word in translations.items():
+
+        answer = input(
+            f"What is the Spanish translation for {english_word}? "
+        )
+
+        if answer.lower().strip() == spanish_word.lower():
+            print("That is correct!")
+
+        else:
+            print(
+                f"That is incorrect, the Spanish translation for "
+                f"{english_word} is {spanish_word}."
+            )
+
+        print()
+        
+        if answer.lower().strip() == spanish_word.lower():
+            correct_count += 1
+
+    print(f"You got {correct_count}/{total} words correct, come study again soon!")
+
+
+if __name__ == '__main__':
+    main()
