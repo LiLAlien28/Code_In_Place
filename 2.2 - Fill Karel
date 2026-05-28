@@ -1,0 +1,43 @@
+from karel.stanfordkarel import *
+
+"""
+Karel should fill the whole world with beepers.
+"""
+
+
+def main():
+    while no_beepers_present():
+        fill_row()
+        come_back()
+        change_row()
+        
+    
+    
+def fill_row():
+    while front_is_clear():
+        put_beeper()
+        move()
+    put_beeper()
+
+def come_back():
+    turn_left()
+    turn_left()
+    while front_is_clear():
+        move()
+    turn_right()
+
+def change_row():
+    if front_is_clear():
+        move()
+        turn_right()
+    else:
+        turn_right()
+        while front_is_clear():
+            move()
+
+def turn_right():
+    for x in range(3):
+        turn_left()
+# There is no need to edit code beyond this point
+if __name__ == '__main__':
+    main()
