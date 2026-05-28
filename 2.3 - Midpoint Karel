@@ -1,0 +1,46 @@
+from karel.stanfordkarel import *
+
+def main():
+    """
+    Karel finds the midpoint of 1st Street and places a single beeper there.
+    Works for both odd and even width worlds.
+    Karel ends facing East at the midpoint.
+    """
+    # WORKS ONLY FOR 5x5 and 11x11 Worlds
+    
+    # Step 1: Put beepers at both ends of the first row
+    put_beeper()                    # Left end (starting position)
+    
+    while front_is_clear():
+        move()
+    put_beeper()                    # Right end
+    
+    # Turn around to face West
+    turn_around()
+    
+    # Step 2: Move the two markers towards each other until they meet
+    while front_is_clear():
+        move()
+        
+        if beepers_present():
+            pick_beeper()           # Remove the beeper we just stepped on
+            turn_around()
+            move()
+            put_beeper()            # Place it one step back (moving inward)
+    
+    # Step 3: Clean up the extra beeper and leave only one at midpoint
+    turn_around()
+    while no_beepers_present():
+        move()
+    
+    pick_beeper()   # Remove the duplicate beeper
+
+# Helper function
+def turn_around():
+    """Turns Karel 180 degrees."""
+    turn_left()
+    turn_left()
+
+# Necessary boilerplate
+if __name__ == '__main__':
+    main()
